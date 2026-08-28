@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Briefcase, Users, CalendarCheck, Receipt, Archive, Sparkles } from "lucide-react";
+import { Briefcase, Users, CalendarCheck, Receipt, Archive, Send, Sparkles } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -10,6 +10,7 @@ const features = [
   { icon: Briefcase, title: "إدارة القضايا", desc: "تتبع كل قضية من الافتتاح حتى الإغلاق." },
   { icon: Users, title: "إدارة العملاء", desc: "سجل موحد لكل عميل ووثائقه وقضاياه." },
   { icon: CalendarCheck, title: "الجلسات", desc: "جدول احترافي مع تنبيهات تلقائية." },
+  { icon: Send, title: "تنبيهات تليجرام", desc: "إشعارات فورية بالجلسات والمهام مباشرة على تليجرام." },
   { icon: Receipt, title: "الأتعاب", desc: "فواتير ومدفوعات بدقة واحترافية." },
   { icon: Archive, title: "الأرشيف", desc: "حفظ وبحث فوري في جميع المستندات." },
   { icon: Sparkles, title: "الذكاء الاصطناعي", desc: "مساعد قانوني للصياغة والبحث.", comingSoon: true },
