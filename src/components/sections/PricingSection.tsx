@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Check } from "lucide-react";
+import { Check, ShieldCheck, Send, Activity, CloudUpload, Archive } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -36,7 +36,12 @@ const plans = [
   },
 ];
 
-const sharedFeatures = "تنبيهات تليجرام الفورية + التنبيهات اليومية، سجل النشاطات، نسخ احتياطي تلقائي، الأرشيف الرقمي — في كل الباقات";
+const sharedFeatures = [
+  { icon: Send, label: "تنبيهات تليجرام الفورية + اليومية" },
+  { icon: Activity, label: "سجل النشاطات" },
+  { icon: CloudUpload, label: "نسخ احتياطي تلقائي" },
+  { icon: Archive, label: "الأرشيف الرقمي" },
+];
 
 export default function PricingSection() {
   const ref = useRef(null);
@@ -55,19 +60,46 @@ export default function PricingSection() {
           <SectionHeading
             eyebrow="الأسعار"
             title="خطط واضحة وبسيطة"
-            subtitle="14 يوماً مجاناً — لا بطاقة ائتمانية"
           />
         </motion.div>
 
-        <motion.p
+        {/* Frame 1 — pill badge, free-trial message */}
+        <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease, delay: 0.1 }}
-          className="text-[#64748B] mb-8"
-          style={{ fontSize: 13.5 }}
+          className="mb-5"
         >
-          {sharedFeatures}
-        </motion.p>
+          <span
+            className="inline-flex items-center gap-2 rounded-full border border-[#C8A75D]/40 bg-[#C8A75D]/[0.08] text-[#8A6D2F] font-semibold px-4 py-2"
+            style={{ fontSize: 13.5 }}
+          >
+            <ShieldCheck size={16} className="text-[#C8A75D]" strokeWidth={2.2} />
+            14 يوماً مجاناً — لا بطاقة ائتمانية
+          </span>
+        </motion.div>
+
+        {/* Frame 2 — bordered card, shared-features chip row */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, ease, delay: 0.18 }}
+          className="rounded-2xl border border-[#1E293B]/10 bg-white px-5 py-4 mb-10 flex flex-wrap items-center gap-x-6 gap-y-3"
+        >
+          <span className="font-bold text-[#1E293B]" style={{ fontSize: 13 }}>
+            في كل الباقات:
+          </span>
+          {sharedFeatures.map((f, i) => (
+            <span
+              key={i}
+              className="inline-flex items-center gap-1.5 text-[#475569]"
+              style={{ fontSize: 13 }}
+            >
+              <f.icon size={15} className="text-[#C8A75D]" strokeWidth={1.8} />
+              {f.label}
+            </span>
+          ))}
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {plans.map((plan, i) => (
