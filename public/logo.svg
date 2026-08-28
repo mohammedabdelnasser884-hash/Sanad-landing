@@ -1,0 +1,14 @@
+<svg width="200" height="200" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="سند">
+  <!-- Rounded square (squircle), navy fill, gold border -->
+  <rect x="6" y="6" width="88" height="88" rx="20" fill="#041B45" stroke="#C8A75D" stroke-width="3.5"/>
+  <!-- Vertical stem -->
+  <line x1="26" y1="30" x2="26" y2="73" stroke="#C8A75D" stroke-width="10" stroke-linecap="round"/>
+  <!-- Top anchor dot -->
+  <circle cx="26" cy="30" r="7" fill="#C8A75D"/>
+  <!-- Line 1 — flush with stem -->
+  <line x1="26" y1="34" x2="79" y2="34" stroke="#C8A75D" stroke-width="10" stroke-linecap="round"/>
+  <!-- Line 2 — flush with stem -->
+  <line x1="26" y1="50" x2="79" y2="50" stroke="#C8A75D" stroke-width="10" stroke-linecap="round"/>
+  <!-- Line 3 — indented, ends flush with lines 1 & 2 -->
+  <line x1="36" y1="65" x2="79" y2="65" stroke="#C8A75D" stroke-width="10" stroke-linecap="round"/>
+</svg>
