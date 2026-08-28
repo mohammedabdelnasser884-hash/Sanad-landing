@@ -10,31 +10,33 @@ const plans = [
   {
     id: "individual",
     name: "الفردية",
-    price: "99",
+    price: "200",
     period: "شهرياً",
-    features: ["محامٍ واحد", "50 قضية نشطة", "التقويم القانوني", "يعمل على كل الأجهزة"],
+    features: ["محامٍ واحد", "50 قضية نشطة", "إدارة العملاء والجلسات", "بوابة الموكل (10 حسابات)", "إدارة الأتعاب والمدفوعات", "استخدام بدون إعلانات"],
     cta: "ابدأ مجاناً",
     highlighted: false,
   },
   {
     id: "office",
     name: "المكتب",
-    price: "299",
+    price: "300",
     period: "شهرياً",
-    features: ["حتى 10 محامين", "قضايا غير محدودة", "الذكاء الاصطناعي (قريباً)", "الأرشفة الذكية"],
+    features: ["كل مميزات الفردية، وأيضاً:", "حتى 5 محامين", "قضايا غير محدودة", "بوابة الموكل (50 حساب)", "الذكاء الاصطناعي (قريباً)", "تقارير المكتب الشاملة"],
     cta: "ابدأ تجربتك",
     highlighted: true,
   },
   {
     id: "enterprise",
     name: "المؤسسة",
-    price: "تواصل",
-    period: "",
-    features: ["محامون غير محدودون", "تخصيص كامل", "مدير حساب مخصص", "SLA مضمون"],
+    price: "1000",
+    period: "شهرياً",
+    features: ["كل مميزات المكتب، وأيضاً:", "حتى 15 محامٍ", "بوابة الموكل بحسابات غير محدودة", "تخصيص كامل للصلاحيات", "مدير حساب مخصص", "دعم أولوية (SLA)"],
     cta: "طلب عرض",
     highlighted: false,
   },
 ];
+
+const sharedFeatures = "تنبيهات تليجرام الفورية + التنبيهات اليومية، سجل النشاطات، نسخ احتياطي تلقائي، الأرشيف الرقمي — في كل الباقات";
 
 export default function PricingSection() {
   const ref = useRef(null);
@@ -56,6 +58,16 @@ export default function PricingSection() {
             subtitle="14 يوماً مجاناً — لا بطاقة ائتمانية"
           />
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, ease, delay: 0.1 }}
+          className="text-[#64748B] mb-8"
+          style={{ fontSize: 13.5 }}
+        >
+          {sharedFeatures}
+        </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {plans.map((plan, i) => (
@@ -114,7 +126,7 @@ export default function PricingSection() {
                         }`}
                         style={{ fontSize: 12 }}
                       >
-                        ر.س / {plan.period}
+                        جنيه / {plan.period}
                       </span>
                     </>
                   )}
