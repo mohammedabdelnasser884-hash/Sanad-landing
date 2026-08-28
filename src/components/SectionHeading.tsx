@@ -10,31 +10,32 @@ interface SectionHeadingProps {
 
 /**
  * Unified section heading used across the whole landing page:
- * a bold gold rectangle badge (eyebrow) + a large, heavy title.
- * Replaces the previously inconsistent mix of pill-badges / plain
- * uppercase text / varying h2 sizes across sections.
+ * a slim gold accent line + label (eyebrow) + a large, heavy title.
+ * Alignment defaults to "start" (right-aligned in RTL) everywhere for
+ * a consistent, editorial feel — pass align="center" only where a
+ * centered header is intentional.
  */
 export default function SectionHeading({
   eyebrow,
   title,
   subtitle,
-  align = "center",
+  align = "start",
   className = "",
 }: SectionHeadingProps) {
   return (
     <div className={`${align === "center" ? "text-center" : ""} ${className}`}>
-      <span
-        className="inline-block bg-[#C8A75D] text-[#041B45] font-extrabold"
-        style={{
-          fontSize: 12,
-          letterSpacing: "0.14em",
-          padding: "7px 18px",
-          borderRadius: 8,
-          marginBottom: 20,
-        }}
+      <div
+        className={`inline-flex items-center gap-2.5 ${align === "center" ? "justify-center" : ""}`}
+        style={{ marginBottom: 16 }}
       >
-        {eyebrow}
-      </span>
+        <span style={{ width: 22, height: 2, background: "#C8A75D", display: "inline-block" }} />
+        <span
+          className="text-[#C8A75D] font-bold"
+          style={{ fontSize: 12.5, letterSpacing: "0.12em" }}
+        >
+          {eyebrow}
+        </span>
+      </div>
       <h2
         className="font-black text-[#1E293B]"
         style={{
