@@ -32,7 +32,7 @@ export default function FeaturesSection() {
           <SectionHeading eyebrow="المميزات" title="كل ما يحتاجه مكتبك" align="start" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-20 gap-y-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 lg:gap-x-20 gap-y-6 md:gap-y-10 lg:gap-y-16">
           {features.map((f, i) => (
             <motion.div
               key={i}
@@ -43,11 +43,11 @@ export default function FeaturesSection() {
             >
               <f.icon
                 size={19}
-                className="text-[#C8A75D] mb-5"
+                className="text-[#C8A75D] mb-2.5"
                 strokeWidth={1.6}
               />
               <h3
-                className="text-[#1E293B] font-semibold mb-2 flex items-center gap-2"
+                className="text-[#1E293B] font-semibold mb-1.5 flex items-center gap-2"
                 style={{ fontSize: 15 }}
               >
                 {f.title}
