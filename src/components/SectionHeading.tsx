@@ -25,13 +25,13 @@ export default function SectionHeading({
   return (
     <div className={`${align === "center" ? "text-center" : ""} ${className}`}>
       <div
-        className={`inline-flex items-center gap-2.5 ${align === "center" ? "justify-center" : ""}`}
-        style={{ marginBottom: 16 }}
+        className={`inline-flex items-center gap-3 ${align === "center" ? "justify-center" : ""}`}
+        style={{ marginBottom: 18 }}
       >
-        <span style={{ width: 22, height: 2, background: "#C8A75D", display: "inline-block" }} />
+        <span style={{ width: 32, height: 3, background: "#C8A75D", display: "inline-block", borderRadius: 2 }} />
         <span
-          className="text-[#C8A75D] font-bold"
-          style={{ fontSize: 12.5, letterSpacing: "0.12em" }}
+          className="text-[#C8A75D] font-extrabold"
+          style={{ fontSize: 17, letterSpacing: "0.06em" }}
         >
           {eyebrow}
         </span>
