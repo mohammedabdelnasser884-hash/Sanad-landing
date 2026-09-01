@@ -33,7 +33,7 @@ export default function PricingSection() {
           className="mb-10"
         >
           <SectionHeading
-            eyebrow="الأسعار"
+            eyebrow="الباقات"
             title="خطط واضحة وبسيطة"
           />
         </motion.div>
@@ -50,7 +50,7 @@ export default function PricingSection() {
             style={{ fontSize: 13.5 }}
           >
             <ShieldCheck size={16} className="text-[#C8A75D]" strokeWidth={2.2} />
-            14 يوماً مجاناً — لا بطاقة ائتمانية
+            شهر مجاناً — لا بطاقة ائتمانية
           </span>
         </motion.div>
 
