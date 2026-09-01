@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { SanadIcon } from "@/components/SanadLogo";
+import { siteConfig } from "@/config";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -32,21 +33,21 @@ export default function CTASection() {
               ابدأ اليوم
             </h2>
             <p className="text-[#64748B]" style={{ fontSize: "1.0625rem", lineHeight: 1.6 }}>
-              انضم إلى مئات المكاتب القانونية في المنطقة.
+              كن من أوائل المكاتب اللي تدير قضاياها بذكاء.
             </p>
           </div>
 
           <div className="flex flex-wrap justify-center gap-3">
             <a
-              href="mailto:support@sanadapp.sa"
+              href={`mailto:${siteConfig.email}`}
               data-testid="button-cta-start"
               className="bg-[#1E293B] hover:bg-[#0F172A] text-white font-semibold px-10 py-4 rounded-xl transition-colors"
               style={{ fontSize: 14 }}
             >
-              ابدأ مجاناً — 14 يوماً
+              اطلب تجربتك المجانية — 14 يوماً
             </a>
             <a
-              href="https://wa.me/966500000000"
+              href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}`}
               target="_blank"
               rel="noopener noreferrer"
               data-testid="button-cta-demo"
@@ -58,11 +59,11 @@ export default function CTASection() {
           </div>
 
           <a
-            href="mailto:support@sanadapp.sa"
+            href={`mailto:${siteConfig.email}`}
             className="text-[#94A3B8] hover:text-[#64748B] transition-colors"
             style={{ fontSize: 13 }}
           >
-            support@sanadapp.sa
+            {siteConfig.email}
           </a>
         </motion.div>
       </div>
