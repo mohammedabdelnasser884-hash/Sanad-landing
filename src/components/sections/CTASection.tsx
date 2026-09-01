@@ -9,9 +9,9 @@ import { siteConfig } from "@/config";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const contactOptions = [
-  { label: "فيسبوك", href: siteConfig.facebook, icon: FacebookIcon, external: true },
-  { label: "إيميل", href: `mailto:${siteConfig.email}`, icon: Mail, external: false },
-  { label: "واتساب", href: `https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}`, icon: WhatsAppIcon, external: true },
+  { label: "Facebook", href: siteConfig.facebook, icon: FacebookIcon, external: true, color: "#1877F2" },
+  { label: "Email", href: `mailto:${siteConfig.email}`, icon: Mail, external: false, color: "#EA4335" },
+  { label: "WhatsApp", href: `https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}`, icon: WhatsAppIcon, external: true, color: "#25D366" },
 ];
 
 export default function CTASection() {
@@ -48,17 +48,22 @@ export default function CTASection() {
           <div className="flex flex-col items-center gap-3 w-full max-w-sm">
             <p className="text-[#94A3B8]" style={{ fontSize: 13 }}>اطلب تجربتك المجانية لمدة شهر كامل عن طريق:</p>
             <div className="flex flex-wrap justify-center gap-3 w-full">
-              {contactOptions.map(({ label, href, icon: Icon, external }) => (
+              {contactOptions.map(({ label, href, icon: Icon, external, color }) => (
                 <a
                   key={label}
                   href={href}
                   {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  data-testid={`button-cta-${label}`}
-                  className="flex items-center gap-2 bg-white hover:bg-[#F8FAFC] text-[#1E293B] font-semibold px-6 py-3.5 rounded-xl transition-colors"
+                  data-testid={`button-cta-${label.toLowerCase()}`}
+                  className="flex items-center gap-2.5 bg-white hover:bg-[#F8FAFC] text-[#1E293B] font-semibold px-5 py-3 rounded-xl transition-colors"
                   style={{ border: "1px solid #E2E8F0", fontSize: 14 }}
                 >
-                  <Icon size={17} />
-                  {label}
+                  <span
+                    className="flex items-center justify-center rounded-full"
+                    style={{ width: 28, height: 28, backgroundColor: color }}
+                  >
+                    <Icon size={15} color="#FFFFFF" />
+                  </span>
+                  <span dir="ltr">{label}</span>
                 </a>
               ))}
             </div>
