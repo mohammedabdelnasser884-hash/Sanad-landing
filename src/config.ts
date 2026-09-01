@@ -2,9 +2,9 @@ export const siteConfig = {
   name: "سند",
   tagline: "منصة إدارة مكاتب المحاماة",
   description: "سند منصة متكاملة لإدارة مكاتب المحاماة تشمل إدارة القضايا والعملاء والجلسات والمستندات والأتعاب في بيئة آمنة وسهلة الاستخدام.",
-  // TODO: النطاق sanadapp.sa قيمة مؤقتة لحد ما تحسم النطاق النهائي.
-  // لما تحسمه، حدّث الإيميل هنا + public/sitemap.xml + public/robots.txt.
-  email: "support@sanadapp.sa",
+  // TODO: إيميل شخصي مؤقت — استبدله بإيميل رسمي على النطاق النهائي
+  // (زي support@[نطاقك]) لما يتحسم.
+  email: "m.gemy4231@gmail.com",
   whatsapp: "+201022150151",
   // رابط النظام الفعلي — مؤقتًا على Vercel لحد ما يتحسم نطاق حقيقي.
   appUrl: "https://sanad-nizam.vercel.app",
