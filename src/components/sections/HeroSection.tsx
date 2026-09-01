@@ -105,6 +105,16 @@ export default function HeroSection() {
           <PhoneFrame src="/screenshots/clients.jpg" alt="الموكلين" />
         </div>
       </motion.div>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.6, ease }}
+        className="text-center text-[#94A3B8]"
+        style={{ fontSize: 13, padding: "28px 24px 8px" }}
+      >
+        بنيناه مع محامين وللمحامين — كل تفصيل مدروس.
+      </motion.p>
     </section>
   );
 }
