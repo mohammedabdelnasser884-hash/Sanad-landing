@@ -10,7 +10,7 @@ export default function Footer() {
         <nav className="flex flex-wrap gap-7">
           {[
             ["/#features", "المميزات"],
-            ["/pricing", "الأسعار"],
+            ["/pricing", "الباقات"],
             ["/privacy", "الخصوصية"],
             ["/terms", "الشروط"],
           ].map(([href, label]) => (
