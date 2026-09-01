@@ -5,7 +5,7 @@ import { Check, Minus } from "lucide-react";
 import FAQSection from "@/components/sections/FAQSection";
 
 const comparisonFeatures = [
-  { name: "عدد المحامين", individual: "1", office: "حتى 10", enterprise: "غير محدود" },
+  { name: "عدد المحامين", individual: "1", office: "حتى 5", enterprise: "حتى 15" },
   { name: "القضايا النشطة", individual: "50", office: "غير محدود", enterprise: "غير محدود" },
   { name: "إدارة العملاء", individual: true, office: true, enterprise: true },
   { name: "التقويم والتنبيهات", individual: true, office: true, enterprise: true },
@@ -54,7 +54,7 @@ export default function Pricing() {
                   ) : (
                     <>
                       <span className="text-5xl font-bold text-[#1E293B]">{plan.price}</span>
-                      <span className="text-sm text-[#64748B] pb-1">ر.س / {plan.period}</span>
+                      <span className="text-sm text-[#64748B] pb-1">{siteConfig.currency} / {plan.period}</span>
                     </>
                   )}
                 </div>
