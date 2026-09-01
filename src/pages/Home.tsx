@@ -4,7 +4,6 @@ import HeroSection from "@/components/sections/HeroSection";
 import FeaturesSection from "@/components/sections/FeaturesSection";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
 import ScreenshotsSection from "@/components/sections/ScreenshotsSection";
-import WhySanadSection from "@/components/sections/WhySanadSection";
 import SecuritySection from "@/components/sections/SecuritySection";
 import PricingSection from "@/components/sections/PricingSection";
 import CTASection from "@/components/sections/CTASection";
@@ -23,7 +22,6 @@ export default function Home() {
         <FeaturesSection />
         <HowItWorksSection />
         <ScreenshotsSection />
-        <WhySanadSection />
         <SecuritySection />
         <PricingSection />
         <CTASection />
