@@ -44,7 +44,7 @@ export default function CTASection() {
               className="bg-[#1E293B] hover:bg-[#0F172A] text-white font-semibold px-10 py-4 rounded-xl transition-colors"
               style={{ fontSize: 14 }}
             >
-              اطلب تجربتك المجانية — 14 يوماً
+              اطلب تجربتك المجانية — شهر كامل
             </a>
             <a
               href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}`}
