@@ -23,14 +23,14 @@ export default function PricingSection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="pricing" ref={ref} className="py-16 px-6 bg-[#FAFAF8]">
+    <section id="pricing" ref={ref} className="py-12 px-6 bg-[#FAFAF8]">
       <div className="max-w-5xl mx-auto">
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease }}
-          className="mb-10"
+          className="mb-6"
         >
           <SectionHeading
             eyebrow="الباقات"
@@ -43,7 +43,7 @@ export default function PricingSection() {
           initial={{ opacity: 0, y: 8 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease, delay: 0.1 }}
-          className="mb-5"
+          className="mb-4"
         >
           <span
             className="inline-flex items-center gap-2 rounded-full border border-[#C8A75D]/40 bg-[#C8A75D]/[0.08] text-[#8A6D2F] font-semibold px-4 py-2"
@@ -59,7 +59,7 @@ export default function PricingSection() {
           initial={{ opacity: 0, y: 8 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease, delay: 0.18 }}
-          className="rounded-2xl border border-[#1E293B]/10 bg-white px-5 py-4 mb-10 flex flex-wrap items-center gap-x-6 gap-y-3"
+          className="rounded-2xl border border-[#1E293B]/10 bg-white px-5 py-4 mb-6 flex flex-wrap items-center gap-x-6 gap-y-3"
         >
           <span className="font-bold text-[#1E293B]" style={{ fontSize: 13 }}>
             في كل الباقات:
@@ -83,7 +83,7 @@ export default function PricingSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.08, duration: 0.5, ease }}
-              className={`relative rounded-2xl p-9 flex flex-col gap-8 ${
+              className={`relative rounded-2xl p-6 flex flex-col gap-5 ${
                 plan.highlighted ? "bg-[#1E293B]" : "bg-white"
               }`}
               style={plan.highlighted ? undefined : { border: "1px solid #EAECF0" }}
@@ -91,16 +91,16 @@ export default function PricingSection() {
             >
               {plan.highlighted && (
                 <span
-                  className="absolute top-7 left-7 bg-[#C8A75D] text-[#1E293B] font-bold rounded-full px-2.5 py-0.5"
+                  className="absolute top-5 left-5 bg-[#C8A75D] text-[#1E293B] font-bold rounded-full px-2.5 py-0.5"
                   style={{ fontSize: 10, letterSpacing: "0.05em" }}
                 >
                   الأكثر شيوعاً
                 </span>
               )}
 
-              <div className="mt-6">
+              <div>
                 <p
-                  className={`font-medium mb-3 uppercase tracking-wider ${
+                  className={`font-medium mb-2 uppercase tracking-wider ${
                     plan.highlighted ? "text-slate-400" : "text-[#94A3B8]"
                   }`}
                   style={{ fontSize: 11 }}
@@ -140,7 +140,7 @@ export default function PricingSection() {
                 </div>
               </div>
 
-              <ul className="flex flex-col gap-3.5 flex-1">
+              <ul className="flex flex-col gap-2.5 flex-1">
                 {plan.features.map((f, fi) => (
                   <li
                     key={fi}
