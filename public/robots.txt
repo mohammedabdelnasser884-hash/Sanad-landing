@@ -1,3 +1,4 @@
+# TODO: sanadapp.sa نطاق مؤقت — حدّثه لما يتحسم النطاق النهائي.
 User-agent: *
 Allow: /
 
