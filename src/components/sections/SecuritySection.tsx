@@ -17,19 +17,19 @@ export default function SecuritySection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="py-16 px-6 bg-white">
+    <section ref={ref} className="py-12 px-6 bg-white">
       <div className="max-w-5xl mx-auto">
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease }}
-          className="mb-12"
+          className="mb-8"
         >
           <SectionHeading eyebrow="الأمان" title="بياناتك في مأمن تام" align="start" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {items.map((item, i) => (
             <motion.div
               key={i}
@@ -40,11 +40,11 @@ export default function SecuritySection() {
             >
               <item.icon
                 size={19}
-                className="text-[#C8A75D] mb-6"
+                className="text-[#C8A75D] mb-3"
                 strokeWidth={1.6}
               />
               <h3
-                className="text-[#1E293B] font-semibold mb-2"
+                className="text-[#1E293B] font-semibold mb-1.5"
                 style={{ fontSize: 15 }}
               >
                 {item.title}
