@@ -62,15 +62,6 @@ export default function HeroSection() {
           >
             ابدأ الآن
           </a>
-          <a
-            href="#contact"
-            data-testid="button-hero-demo"
-            className="text-[#64748B] hover:text-[#1E293B] font-medium transition-colors flex items-center gap-1.5"
-            style={{ fontSize: 14 }}
-          >
-            طلب عرض توضيحي
-            <span style={{ opacity: 0.5 }}>←</span>
-          </a>
         </motion.div>
       </div>
 
