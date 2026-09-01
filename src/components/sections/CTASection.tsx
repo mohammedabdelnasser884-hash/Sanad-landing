@@ -1,10 +1,18 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { Mail } from "lucide-react";
 import { SanadIcon } from "@/components/SanadLogo";
+import { FacebookIcon, WhatsAppIcon } from "@/components/BrandIcons";
 import { siteConfig } from "@/config";
 
 const ease = [0.22, 1, 0.36, 1] as const;
+
+const contactOptions = [
+  { label: "فيسبوك", href: siteConfig.facebook, icon: FacebookIcon, external: true },
+  { label: "إيميل", href: `mailto:${siteConfig.email}`, icon: Mail, external: false },
+  { label: "واتساب", href: `https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}`, icon: WhatsAppIcon, external: true },
+];
 
 export default function CTASection() {
   const ref = useRef(null);
@@ -37,34 +45,24 @@ export default function CTASection() {
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3">
-            <a
-              href={`mailto:${siteConfig.email}`}
-              data-testid="button-cta-start"
-              className="bg-[#1E293B] hover:bg-[#0F172A] text-white font-semibold px-10 py-4 rounded-xl transition-colors"
-              style={{ fontSize: 14 }}
-            >
-              اطلب تجربتك المجانية — شهر كامل
-            </a>
-            <a
-              href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="button-cta-demo"
-              className="text-[#1E293B] font-semibold px-10 py-4 rounded-xl transition-colors bg-white"
-              style={{ border: "1px solid #E2E8F0", fontSize: 14 }}
-            >
-              تواصل معنا
-            </a>
+          <div className="flex flex-col items-center gap-3 w-full max-w-sm">
+            <p className="text-[#94A3B8]" style={{ fontSize: 13 }}>اطلب تجربتك المجانية لمدة شهر كامل عن طريق:</p>
+            <div className="flex flex-wrap justify-center gap-3 w-full">
+              {contactOptions.map(({ label, href, icon: Icon, external }) => (
+                <a
+                  key={label}
+                  href={href}
+                  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  data-testid={`button-cta-${label}`}
+                  className="flex items-center gap-2 bg-white hover:bg-[#F8FAFC] text-[#1E293B] font-semibold px-6 py-3.5 rounded-xl transition-colors"
+                  style={{ border: "1px solid #E2E8F0", fontSize: 14 }}
+                >
+                  <Icon size={17} />
+                  {label}
+                </a>
+              ))}
+            </div>
           </div>
-
-          <a
-            href={`mailto:${siteConfig.email}`}
-            className="text-[#94A3B8] hover:text-[#64748B] transition-colors"
-            style={{ fontSize: 13 }}
-          >
-            {siteConfig.email}
-          </a>
         </motion.div>
       </div>
     </section>
