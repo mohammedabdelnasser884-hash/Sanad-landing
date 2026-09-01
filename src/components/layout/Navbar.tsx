@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { SanadLogoHorizontal } from "@/components/SanadLogo";
+import { siteConfig } from "@/config";
 
 const NAV = [
   ["/#features", "المميزات"],
@@ -51,13 +52,13 @@ export default function Navbar() {
 
         {/* Desktop actions */}
         <div className="hidden md:flex items-center gap-4">
-          <Link
-            href="/portal"
+          <a
+            href={siteConfig.appUrl}
             className="text-sm text-[#64748B] hover:text-[#1E293B] transition-colors"
             data-testid="link-login"
           >
             دخول
-          </Link>
+          </a>
           <a
             href="#contact"
             data-testid="button-start"
@@ -98,6 +99,13 @@ export default function Navbar() {
                 {label}
               </a>
             ))}
+            <a
+              href={siteConfig.appUrl}
+              onClick={() => setOpen(false)}
+              className="text-[#64748B] text-sm"
+            >
+              دخول
+            </a>
             <a
               href="#contact"
               onClick={() => setOpen(false)}
