@@ -7,7 +7,7 @@ import { SanadLogoHorizontal } from "@/components/SanadLogo";
 const NAV = [
   ["/#features", "المميزات"],
   ["/#screenshots", "التطبيق"],
-  ["/pricing", "الأسعار"],
+  ["/pricing", "الباقات"],
   ["/#contact", "تواصل"],
 ] as const;
 
