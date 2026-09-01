@@ -14,10 +14,10 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="تابعنا على فيسبوك"
-            className="flex items-center justify-center bg-[#1E293B] hover:bg-[#0F172A] text-white rounded-full transition-colors"
-            style={{ width: 34, height: 34 }}
+            className="flex items-center justify-center rounded-full transition-opacity hover:opacity-85"
+            style={{ width: 34, height: 34, backgroundColor: "#1877F2" }}
           >
-            <FacebookIcon size={17} />
+            <FacebookIcon size={17} color="#FFFFFF" />
           </a>
         </div>
 
