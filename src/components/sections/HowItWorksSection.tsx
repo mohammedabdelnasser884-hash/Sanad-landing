@@ -27,7 +27,7 @@ export default function HowItWorksSection() {
           <SectionHeading
             eyebrow="كيف يعمل سند"
             title="من القضية الأولى لإدارة المكتب"
-            subtitle="خطوات بسيطة تمنحك تحكماً كاملاً في عمل مكتبك القانوني"
+            subtitle="سند لا يضيف نظامًا جديدًا إلى مكتبك. بل يرتب ما هو موجود أصلًا."
           />
         </motion.div>
 
