@@ -3,38 +3,13 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Check, ShieldCheck, Send, Activity, CloudUpload, Archive } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
+import { siteConfig } from "@/config";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const plans = [
-  {
-    id: "individual",
-    name: "الفردية",
-    price: "200",
-    period: "شهرياً",
-    features: ["محامٍ واحد", "50 قضية نشطة", "إدارة العملاء والجلسات", "بوابة الموكل (10 حسابات)", "إدارة الأتعاب والمدفوعات", "استخدام بدون إعلانات"],
-    cta: "ابدأ مجاناً",
-    highlighted: false,
-  },
-  {
-    id: "office",
-    name: "المكتب",
-    price: "300",
-    period: "شهرياً",
-    features: ["كل مميزات الفردية، وأيضاً:", "حتى 5 محامين", "قضايا غير محدودة", "بوابة الموكل (50 حساب)", "الذكاء الاصطناعي (قريباً)", "تقارير المكتب الشاملة"],
-    cta: "ابدأ تجربتك",
-    highlighted: true,
-  },
-  {
-    id: "enterprise",
-    name: "المؤسسة",
-    price: "1000",
-    period: "شهرياً",
-    features: ["كل مميزات المكتب، وأيضاً:", "حتى 15 محامٍ", "بوابة الموكل بحسابات غير محدودة", "تخصيص كامل للصلاحيات", "مدير حساب مخصص", "دعم أولوية (SLA)"],
-    cta: "طلب عرض",
-    highlighted: false,
-  },
-];
+// نفس الباقات المستخدمة في صفحة /pricing (siteConfig.pricing) — مصدر
+// واحد للأسعار عشان ميتكررش تناقض الأرقام/العملة بين الصفحتين.
+const plans = siteConfig.pricing;
 
 const sharedFeatures = [
   { icon: Send, label: "تنبيهات تليجرام الفورية + اليومية" },
@@ -158,7 +133,7 @@ export default function PricingSection() {
                         }`}
                         style={{ fontSize: 12 }}
                       >
-                        جنيه / {plan.period}
+                        {siteConfig.currency} / {plan.period}
                       </span>
                     </>
                   )}
