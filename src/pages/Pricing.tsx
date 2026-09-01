@@ -25,7 +25,7 @@ export default function Pricing() {
       <main className="flex-grow pt-32 pb-16">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-[#1E293B]">خطط أسعار تناسب حجم مكتبك</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-[#1E293B]">باقات تناسب حجم مكتبك</h1>
             <p className="text-lg text-[#64748B]">اختر الباقة الأنسب لاحتياجاتك الحالية، ويمكنك الترقية في أي وقت.</p>
           </div>
 
