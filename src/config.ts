@@ -6,8 +6,11 @@ export const siteConfig = {
   // لما تحسمه، حدّث الإيميل هنا + public/sitemap.xml + public/robots.txt.
   email: "support@sanadapp.sa",
   whatsapp: "+201022150151",
-  // TODO: حسابات سوشيال ميديا وهمية لحد دلوقتي (مش مستخدمة في أي مكان
-  // في الموقع حاليًا). حدّثها بحساباتك الحقيقية قبل ما تظهرها في أي شاشة.
+  // رابط النظام الفعلي — مؤقتًا على Vercel لحد ما يتحسم نطاق حقيقي.
+  appUrl: "https://sanad-nizam.vercel.app",
+  facebook: "https://facebook.com/sanadnizam",
+  // TODO: باقي حسابات السوشيال ميديا وهمية لحد دلوقتي (مش مستخدمة في
+  // أي مكان في الموقع حاليًا). حدّثها بحساباتك الحقيقية قبل ما تظهرها.
   socialLinks: {
     twitter: "https://twitter.com/sanadapp",
     linkedin: "https://linkedin.com/company/sanadapp",
