@@ -1,4 +1,6 @@
+import { Facebook } from "lucide-react";
 import { SanadLogoHorizontal } from "@/components/SanadLogo";
+import { siteConfig } from "@/config";
 
 export default function Footer() {
   return (
@@ -7,7 +9,7 @@ export default function Footer() {
 
         <SanadLogoHorizontal height={26} />
 
-        <nav className="flex flex-wrap gap-7">
+        <nav className="flex flex-wrap items-center gap-7">
           {[
             ["/#features", "المميزات"],
             ["/pricing", "الباقات"],
@@ -22,6 +24,15 @@ export default function Footer() {
               {label}
             </a>
           ))}
+          <a
+            href={siteConfig.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="صفحة سند على فيسبوك"
+            className="text-[#94A3B8] hover:text-[#64748B] transition-colors"
+          >
+            <Facebook size={16} />
+          </a>
         </nav>
 
         <p className="text-xs text-[#C4CEDD]">© {new Date().getFullYear()} سند</p>
