@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import { SanadLogoHorizontal } from "@/components/SanadLogo";
 import { FacebookIcon } from "@/components/BrandIcons";
 import { siteConfig } from "@/config";
@@ -22,19 +23,24 @@ export default function Footer() {
         </div>
 
         <nav className="flex flex-wrap items-center gap-7">
+          <a
+            href="/#features"
+            className="text-xs text-[#94A3B8] hover:text-[#64748B] transition-colors"
+          >
+            المميزات
+          </a>
           {[
-            ["/#features", "المميزات"],
             ["/pricing", "الباقات"],
             ["/privacy", "الخصوصية"],
             ["/terms", "الشروط"],
           ].map(([href, label]) => (
-            <a
+            <Link
               key={href}
               href={href}
               className="text-xs text-[#94A3B8] hover:text-[#64748B] transition-colors"
             >
               {label}
-            </a>
+            </Link>
           ))}
         </nav>
 
