@@ -5,12 +5,14 @@ import { Menu, X } from "lucide-react";
 import { SanadLogoHorizontal } from "@/components/SanadLogo";
 import { siteConfig } from "@/config";
 
-const NAV = [
+const NAV_ANCHORS = [
   ["/#features", "المميزات"],
   ["/#screenshots", "التطبيق"],
-  ["/pricing", "الباقات"],
-  ["/#contact", "تواصل"],
 ] as const;
+
+const NAV_ROUTE = ["/pricing", "الباقات"] as const;
+
+const NAV_CONTACT = ["/#contact", "تواصل"] as const;
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -39,7 +41,7 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {NAV.map(([href, label]) => (
+          {NAV_ANCHORS.map(([href, label]) => (
             <a
               key={href}
               href={href}
@@ -48,6 +50,18 @@ export default function Navbar() {
               {label}
             </a>
           ))}
+          <Link
+            href={NAV_ROUTE[0]}
+            className="text-sm text-[#64748B] hover:text-[#1E293B] transition-colors"
+          >
+            {NAV_ROUTE[1]}
+          </Link>
+          <a
+            href={NAV_CONTACT[0]}
+            className="text-sm text-[#64748B] hover:text-[#1E293B] transition-colors"
+          >
+            {NAV_CONTACT[1]}
+          </a>
         </nav>
 
         {/* Desktop actions */}
@@ -89,7 +103,7 @@ export default function Navbar() {
             transition={{ duration: 0.18 }}
             className="md:hidden bg-white border-t border-[#F1F5F9] px-6 py-6 flex flex-col gap-5"
           >
-            {NAV.map(([href, label]) => (
+            {NAV_ANCHORS.map(([href, label]) => (
               <a
                 key={href}
                 href={href}
@@ -99,6 +113,20 @@ export default function Navbar() {
                 {label}
               </a>
             ))}
+            <Link
+              href={NAV_ROUTE[0]}
+              onClick={() => setOpen(false)}
+              className="text-[#64748B] text-sm"
+            >
+              {NAV_ROUTE[1]}
+            </Link>
+            <a
+              href={NAV_CONTACT[0]}
+              onClick={() => setOpen(false)}
+              className="text-[#64748B] text-sm"
+            >
+              {NAV_CONTACT[1]}
+            </a>
             <a
               href={siteConfig.appUrl}
               onClick={() => setOpen(false)}
