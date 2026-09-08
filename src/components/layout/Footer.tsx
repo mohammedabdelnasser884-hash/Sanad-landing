@@ -31,7 +31,7 @@ export default function Footer() {
           </a>
           {[
             ["/pricing", "الباقات"],
-            ["/privacy", "الخصوصية"],
+            ["/privacy", "السياسات والخصوصية"],
             ["/terms", "الشروط"],
           ].map(([href, label]) => (
             <Link
