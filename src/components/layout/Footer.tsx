@@ -1,7 +1,5 @@
 import { Link } from "wouter";
 import { SanadLogoHorizontal } from "@/components/SanadLogo";
-import { FacebookIcon } from "@/components/BrandIcons";
-import { siteConfig } from "@/config";
 
 export default function Footer() {
   return (
@@ -10,16 +8,6 @@ export default function Footer() {
 
         <div className="flex items-center gap-4">
           <SanadLogoHorizontal height={26} />
-          <a
-            href={siteConfig.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="تابعنا على فيسبوك"
-            className="flex items-center justify-center rounded-full transition-opacity hover:opacity-85"
-            style={{ width: 34, height: 34, backgroundColor: "#1877F2" }}
-          >
-            <FacebookIcon size={17} color="#FFFFFF" />
-          </a>
         </div>
 
         <nav className="flex flex-wrap items-center gap-7">
