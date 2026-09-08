@@ -4,7 +4,7 @@ export const siteConfig = {
   description: "سند منصة متكاملة لإدارة مكاتب المحاماة تشمل إدارة القضايا والعملاء والجلسات والمستندات والأتعاب في بيئة آمنة وسهلة الاستخدام.",
   // إيميل نهائي مختار.
   email: "sanadnizam@gmail.com",
-  whatsapp: "+201022150151",
+  whatsapp: "+201500682665",
   // رابط النظام الفعلي — مؤقتًا على Cloudflare Workers لحد ما يتحسم نطاق حقيقي.
   appUrl: "https://sanad.nizzam.workers.dev",
   facebook: "https://facebook.com/sanadnizam",
