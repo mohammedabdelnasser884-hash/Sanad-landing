@@ -5,8 +5,8 @@ export const siteConfig = {
   // إيميل نهائي مختار.
   email: "sanadnizam@gmail.com",
   whatsapp: "+201022150151",
-  // رابط النظام الفعلي — مؤقتًا على Vercel لحد ما يتحسم نطاق حقيقي.
-  appUrl: "https://sanad-nizam.vercel.app",
+  // رابط النظام الفعلي — مؤقتًا على Cloudflare Workers لحد ما يتحسم نطاق حقيقي.
+  appUrl: "https://sanad.nizzam.workers.dev",
   facebook: "https://facebook.com/sanadnizam",
   // TODO: باقي حسابات السوشيال ميديا وهمية لحد دلوقتي (مش مستخدمة في
   // أي مكان في الموقع حاليًا). حدّثها بحساباتك الحقيقية قبل ما تظهرها.
