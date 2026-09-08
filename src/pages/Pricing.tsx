@@ -10,6 +10,7 @@ const comparisonFeatures = [
   { name: "إدارة العملاء", individual: true, office: true, enterprise: true },
   { name: "التقويم والتنبيهات", individual: true, office: true, enterprise: true },
   { name: "التقارير", individual: "أساسية", office: "متقدمة", enterprise: "مخصصة" },
+  { name: "نسخ احتياطي تلقائي يومي", individual: false, office: true, enterprise: true },
   { name: "يعمل على كل الأجهزة (ويب)", individual: true, office: true, enterprise: true },
   { name: "الأرشفة الذكية", individual: false, office: true, enterprise: true },
   { name: "المساعد بالذكاء الاصطناعي (قريباً)", individual: false, office: true, enterprise: true },
