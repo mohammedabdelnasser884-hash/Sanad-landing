@@ -12,6 +12,8 @@ const NAV_ANCHORS = [
 
 const NAV_ROUTE = ["/pricing", "الباقات"] as const;
 
+const NAV_PRIVACY_ROUTE = ["/privacy", "السياسات والخصوصية"] as const;
+
 const NAV_CONTACT = ["/#contact", "تواصل"] as const;
 
 export default function Navbar() {
@@ -127,6 +129,13 @@ export default function Navbar() {
             >
               {NAV_CONTACT[1]}
             </a>
+            <Link
+              href={NAV_PRIVACY_ROUTE[0]}
+              onClick={() => setOpen(false)}
+              className="text-[#64748B] text-sm"
+            >
+              {NAV_PRIVACY_ROUTE[1]}
+            </Link>
             <a
               href={siteConfig.appUrl}
               onClick={() => setOpen(false)}
