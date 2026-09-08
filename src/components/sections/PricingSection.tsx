@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Check, ShieldCheck, Send, Activity, CloudUpload, Archive } from "lucide-react";
+import { Check, ShieldCheck, Send, Activity, Archive } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import { siteConfig } from "@/config";
 
@@ -14,7 +14,6 @@ const plans = siteConfig.pricing;
 const sharedFeatures = [
   { icon: Send, label: "تنبيهات تليجرام الفورية + اليومية" },
   { icon: Activity, label: "سجل النشاطات" },
-  { icon: CloudUpload, label: "نسخ احتياطي تلقائي" },
   { icon: Archive, label: "الأرشيف الرقمي" },
 ];
 
