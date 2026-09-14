@@ -50,14 +50,8 @@ export default function Pricing() {
                   <p className="text-sm text-[#64748B]">{plan.description}</p>
                 </div>
                 <div className="flex items-end gap-1 mb-8">
-                  {isNaN(Number(plan.price)) ? (
-                    <span className="text-3xl font-bold text-[#C8A75D]">{plan.price}</span>
-                  ) : (
-                    <>
-                      <span className="text-5xl font-bold text-[#1E293B]">{plan.price}</span>
-                      <span className="text-sm text-[#64748B] pb-1">{siteConfig.currency} / {plan.period}</span>
-                    </>
-                  )}
+                  <span className="text-5xl font-bold text-[#1E293B]">{plan.monthly}</span>
+                  <span className="text-sm text-[#64748B] pb-1">{siteConfig.currency} / شهرياً</span>
                 </div>
                 
                 <ul className="flex-grow space-y-3 mb-8">
