@@ -56,6 +56,14 @@ export default function PaymentModeToggle({
                   className="absolute inset-0 rounded-full bg-[#1E293B]"
                 />
               )}
+              {opt.value === "annual" && (
+                <span
+                  className="absolute -top-2.5 -right-1.5 z-20 rounded-full bg-[#C8A75D] text-[#1E293B] font-bold whitespace-nowrap px-1.5 py-0.5 shadow-sm"
+                  style={{ fontSize: 9 }}
+                >
+                  الأوفر
+                </span>
+              )}
               <span className={`relative z-10 ${active ? "text-white" : "text-[#64748B]"}`}>
                 {opt.label}
               </span>
