@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Check, ShieldCheck, Send, Activity, Archive } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
+import PaymentModeToggle, { type PaymentMode } from "@/components/PaymentModeToggle";
 import { siteConfig } from "@/config";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -20,6 +21,9 @@ const sharedFeatures = [
 export default function PricingSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  // افتراضي = سنوي (قرار 14 سبتمبر 2026). المرحلة دي (2.1) بصرية بحتة —
+  // بلوك السعر جوه الكروت هيتوصّل بالـstate ده في مرحلة 2.2.
+  const [paymentMode, setPaymentMode] = useState<PaymentMode>("annual");
 
   return (
     <section id="pricing" ref={ref} className="py-12 px-6 bg-[#FAFAF8]">
@@ -73,6 +77,17 @@ export default function PricingSection() {
               {f.label}
             </span>
           ))}
+        </motion.div>
+
+        {/* Frame 2.5 — payment-mode toggle (شهري / سنوي / قسّط) — UI فقط،
+            بلوك السعر جوه الكروت لسه بيعرض plan.monthly زي ما هو (مرحلة 2.2) */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, ease, delay: 0.24 }}
+          className="mb-8"
+        >
+          <PaymentModeToggle mode={paymentMode} onChange={setPaymentMode} />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
