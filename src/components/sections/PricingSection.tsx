@@ -107,35 +107,22 @@ export default function PricingSection() {
                   {plan.name}
                 </p>
                 <div className="flex items-end gap-1.5">
-                  {isNaN(Number(plan.price)) ? (
-                    <span
-                      className={`font-black ${
-                        plan.highlighted ? "text-[#C8A75D]" : "text-[#1E293B]"
-                      }`}
-                      style={{ fontSize: "1.75rem" }}
-                    >
-                      {plan.price}
-                    </span>
-                  ) : (
-                    <>
-                      <span
-                        className={`font-black leading-none ${
-                          plan.highlighted ? "text-white" : "text-[#1E293B]"
-                        }`}
-                        style={{ fontSize: "2.75rem" }}
-                      >
-                        {plan.price}
-                      </span>
-                      <span
-                        className={`pb-1.5 ${
-                          plan.highlighted ? "text-slate-400" : "text-[#94A3B8]"
-                        }`}
-                        style={{ fontSize: 12 }}
-                      >
-                        {siteConfig.currency} / {plan.period}
-                      </span>
-                    </>
-                  )}
+                  <span
+                    className={`font-black leading-none ${
+                      plan.highlighted ? "text-white" : "text-[#1E293B]"
+                    }`}
+                    style={{ fontSize: "2.75rem" }}
+                  >
+                    {plan.monthly}
+                  </span>
+                  <span
+                    className={`pb-1.5 ${
+                      plan.highlighted ? "text-slate-400" : "text-[#94A3B8]"
+                    }`}
+                    style={{ fontSize: 12 }}
+                  >
+                    {siteConfig.currency} / شهرياً
+                  </span>
                 </div>
               </div>
 
