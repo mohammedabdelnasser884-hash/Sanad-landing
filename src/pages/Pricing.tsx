@@ -1,14 +1,25 @@
+import { useState } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { siteConfig } from "@/config";
-import { Check, Minus } from "lucide-react";
+import { siteConfig, getAnnualPrice, getAnnualMonthlyEquivalent, getInstallmentPrice } from "@/config";
+import { Check, Minus, Send, Activity, Archive, Scale } from "lucide-react";
 import FAQSection from "@/components/sections/FAQSection";
+import PaymentModeToggle, { type PaymentMode, type InstallmentPlan } from "@/components/PaymentModeToggle";
+
+// نفس الشريط الموجود في PricingSection (الرئيسية) — مرحلة 3.4.
+const sharedFeatures = [
+  { icon: Send, label: "تنبيهات تليجرام الفورية + اليومية" },
+  { icon: Activity, label: "سجل النشاطات" },
+  { icon: Archive, label: "الأرشيف الرقمي" },
+  { icon: Scale, label: "الموارد القانونية" },
+];
 
 const comparisonFeatures = [
   { name: "عدد المحامين", individual: "1", office: "حتى 5", enterprise: "حتى 15" },
   { name: "القضايا النشطة", individual: "50", office: "غير محدود", enterprise: "غير محدود" },
   { name: "إدارة العملاء", individual: true, office: true, enterprise: true },
   { name: "التقويم والتنبيهات", individual: true, office: true, enterprise: true },
+  { name: "الموارد القانونية", individual: true, office: true, enterprise: true },
   { name: "التقارير", individual: "أساسية", office: "متقدمة", enterprise: "مخصصة" },
   { name: "نسخ احتياطي تلقائي يومي", individual: false, office: true, enterprise: true },
   { name: "يعمل على كل الأجهزة (ويب)", individual: true, office: true, enterprise: true },
@@ -20,14 +31,41 @@ const comparisonFeatures = [
 ];
 
 export default function Pricing() {
+  // نفس افتراضي PricingSection (سنوي) — مرحلة 3.1/3.2/3.3.
+  const [paymentMode, setPaymentMode] = useState<PaymentMode>("annual");
+  const [installmentPlan, setInstallmentPlan] = useState<InstallmentPlan>(2);
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
       <main className="flex-grow pt-32 pb-16">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-10">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-[#1E293B]">باقات تناسب حجم مكتبك</h1>
             <p className="text-lg text-[#64748B]">اختر الباقة الأنسب لاحتياجاتك الحالية، ويمكنك الترقية في أي وقت.</p>
+          </div>
+
+          {/* شريط "في كل الباقات" — نفس شريط الرئيسية (مرحلة 3.4) */}
+          <div className="max-w-4xl mx-auto mb-8 rounded-2xl border border-[#1E293B]/10 bg-white px-5 py-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+            <span className="font-bold text-[#1E293B]" style={{ fontSize: 13 }}>
+              في كل الباقات:
+            </span>
+            {sharedFeatures.map((f, i) => (
+              <span key={i} className="inline-flex items-center gap-1.5 text-[#475569]" style={{ fontSize: 13 }}>
+                <f.icon size={15} className="text-[#C8A75D]" strokeWidth={1.8} />
+                {f.label}
+              </span>
+            ))}
+          </div>
+
+          {/* توجل طريقة الدفع (شهري/سنوي/قسّط) — مرحلة 3.1/3.3 */}
+          <div className="mb-10">
+            <PaymentModeToggle
+              mode={paymentMode}
+              onChange={setPaymentMode}
+              installmentPlan={installmentPlan}
+              onInstallmentPlanChange={setInstallmentPlan}
+            />
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-24">
@@ -49,9 +87,46 @@ export default function Pricing() {
                   <h3 className="text-xl font-bold mb-2 text-[#1E293B]">{plan.name}</h3>
                   <p className="text-sm text-[#64748B]">{plan.description}</p>
                 </div>
-                <div className="flex items-end gap-1 mb-8">
-                  <span className="text-5xl font-bold text-[#1E293B]">{plan.monthly}</span>
-                  <span className="text-sm text-[#64748B] pb-1">{siteConfig.currency} / شهرياً</span>
+
+                {/* بلوك السعر — متوصّل بالتوجل (مرحلة 3.2/3.3) */}
+                <div className="mb-8">
+                  {paymentMode === "annual" && (
+                    <>
+                      <div className="flex items-end gap-1 mb-1">
+                        <span className="text-5xl font-bold text-[#1E293B]">
+                          {getAnnualPrice(plan.monthly).toLocaleString("ar-EG")}
+                        </span>
+                        <span className="text-sm text-[#64748B] pb-1">{siteConfig.currency} / سنوياً</span>
+                      </div>
+                      <p className="text-xs font-medium text-[#8A6D2F]">
+                        بمعدل {getAnnualMonthlyEquivalent(plan.monthly).toLocaleString("ar-EG")} {siteConfig.currency} بس في الشهر
+                      </p>
+                    </>
+                  )}
+
+                  {paymentMode === "installment" && (
+                    <>
+                      <div className="flex items-end gap-1 mb-1">
+                        <span className="text-5xl font-bold text-[#1E293B]">
+                          {getInstallmentPrice(plan.monthly, installmentPlan).toLocaleString("ar-EG")}
+                        </span>
+                        <span className="text-sm text-[#64748B] pb-1">{siteConfig.currency} / كل دفعة</span>
+                      </div>
+                      <p className="text-xs font-medium text-[#8A6D2F]">
+                        {installmentPlan === 2 ? "دفعتين (كل 6 شهور)" : "4 دفعات (كل 3 شهور)"} — قسّط على راحتك، من غير أي رسوم إضافية
+                      </p>
+                      <p className="text-[10.5px] text-[#64748B] mt-0.5">
+                        التقسيط بيتم على القيمة الشهرية الكاملة (بدون خصم الشهرين الخاص بالدفع السنوي مرة واحدة)
+                      </p>
+                    </>
+                  )}
+
+                  {paymentMode === "monthly" && (
+                    <div className="flex items-end gap-1">
+                      <span className="text-5xl font-bold text-[#1E293B]">{plan.monthly}</span>
+                      <span className="text-sm text-[#64748B] pb-1">{siteConfig.currency} / شهرياً</span>
+                    </div>
+                  )}
                 </div>
                 
                 <ul className="flex-grow space-y-3 mb-8">
