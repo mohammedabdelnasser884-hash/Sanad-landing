@@ -183,7 +183,11 @@ export default function PricingSection() {
               </ul>
 
               <a
-                href="#contact"
+                href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(
+                  `مرحباً، أنا مهتم بباقة ${plan.name} في سند`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 data-testid={`button-plan-${plan.id}`}
                 className={`w-full py-3.5 rounded-xl text-sm font-semibold text-center transition-colors ${
                   plan.highlighted
