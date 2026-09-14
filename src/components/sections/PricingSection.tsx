@@ -3,8 +3,8 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Check, ShieldCheck, Send, Activity, Archive, Scale } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-import PaymentModeToggle, { type PaymentMode, type InstallmentPlan } from "@/components/PaymentModeToggle";
-import { siteConfig, getAnnualPrice, getAnnualMonthlyEquivalent, getInstallmentPrice } from "@/config";
+import PaymentModeToggle, { type PaymentMode } from "@/components/PaymentModeToggle";
+import { siteConfig, getAnnualPrice, getAnnualMonthlyEquivalent } from "@/config";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -22,10 +22,8 @@ const sharedFeatures = [
 export default function PricingSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
-  // افتراضي = سنوي (قرار 14 سبتمبر 2026). بلوك السعر جوه الكروت متوصّل
-  // بالـstate ده (مرحلة 2.2)، وبـinstallmentPlan لما يكون وضع "قسّط" (2.3).
-  const [paymentMode, setPaymentMode] = useState<PaymentMode>("annual");
-  const [installmentPlan, setInstallmentPlan] = useState<InstallmentPlan>(2);
+  // افتراضي = شهري (قرار جيمي — نظام التقسيط اتشال بالكامل، شهري وسنوي بس).
+  const [paymentMode, setPaymentMode] = useState<PaymentMode>("monthly");
 
   return (
     <section id="pricing" ref={ref} className="py-12 px-6 bg-[#FAFAF8]">
@@ -81,20 +79,14 @@ export default function PricingSection() {
           ))}
         </motion.div>
 
-        {/* Frame 2.5 — payment-mode toggle (شهري / سنوي / قسّط)، وsub-toggle
-            التقسيط (دفعتين/4 دفعات) لما mode === "installment" */}
+        {/* Frame 2.5 — payment-mode toggle (شهري / سنوي) */}
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease, delay: 0.24 }}
           className="mb-8"
         >
-          <PaymentModeToggle
-            mode={paymentMode}
-            onChange={setPaymentMode}
-            installmentPlan={installmentPlan}
-            onInstallmentPlanChange={setInstallmentPlan}
-          />
+          <PaymentModeToggle mode={paymentMode} onChange={setPaymentMode} />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -152,35 +144,6 @@ export default function PricingSection() {
                         </div>
                         <p className={`mt-1.5 font-medium ${noteTextClass}`} style={{ fontSize: 12 }}>
                           بمعدل {monthlyEquivalent.toLocaleString("ar-EG")} {siteConfig.currency} بس في الشهر
-                        </p>
-                      </>
-                    );
-                  }
-
-                  if (paymentMode === "installment") {
-                    const installmentPrice = getInstallmentPrice(plan.monthly, installmentPlan);
-                    const installmentLabel =
-                      installmentPlan === 2 ? "دفعتين (كل 6 شهور)" : "4 دفعات (كل 3 شهور)";
-                    return (
-                      <>
-                        <div className="flex items-end gap-1.5">
-                          <span
-                            className={`font-black leading-none ${
-                              plan.highlighted ? "text-white" : "text-[#1E293B]"
-                            }`}
-                            style={{ fontSize: "2.75rem" }}
-                          >
-                            {installmentPrice.toLocaleString("ar-EG")}
-                          </span>
-                          <span className={`pb-1.5 ${subTextClass}`} style={{ fontSize: 12 }}>
-                            {siteConfig.currency} / كل دفعة
-                          </span>
-                        </div>
-                        <p className={`mt-1.5 font-medium ${noteTextClass}`} style={{ fontSize: 12 }}>
-                          {installmentLabel} — قسّط على راحتك، من غير أي رسوم إضافية
-                        </p>
-                        <p className={`mt-0.5 ${subTextClass}`} style={{ fontSize: 10.5 }}>
-                          التقسيط بيتم على القيمة الشهرية الكاملة (بدون خصم الشهرين الخاص بالدفع السنوي مرة واحدة)
                         </p>
                       </>
                     );
