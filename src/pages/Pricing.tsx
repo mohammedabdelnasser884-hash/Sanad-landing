@@ -115,9 +115,16 @@ export default function Pricing() {
                   ))}
                 </ul>
                 
-                <a href="/#contact" className={`w-full py-3 rounded-lg text-sm font-semibold text-center transition-colors ${
-                  plan.highlighted ? 'bg-[#C8A75D] hover:bg-[#B38E3D] text-[#1E293B]' : 'border border-[#E2E8F0] hover:border-[#C8A75D] text-[#1E293B] bg-white'
-                }`}>
+                <a
+                  href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(
+                    `مرحباً، أنا مهتم بباقة ${plan.name} في سند`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-full py-3 rounded-lg text-sm font-semibold text-center transition-colors ${
+                    plan.highlighted ? 'bg-[#C8A75D] hover:bg-[#B38E3D] text-[#1E293B]' : 'border border-[#E2E8F0] hover:border-[#C8A75D] text-[#1E293B] bg-white'
+                  }`}
+                >
                   {plan.cta}
                 </a>
               </div>
