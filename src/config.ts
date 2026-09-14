@@ -131,11 +131,9 @@ export const siteConfig = {
 };
 
 // معاملات الحساب — نفس منطق updateSuggestedPaymentAmount() في offices-portal.html:
-// سنوي = شهري × 10 (دفعة واحدة، خصم شهرين)، دفعتين = شهري × 6، 4 دفعات = شهري × 3.
+// سنوي = شهري × 10 (دفعة واحدة، خصم شهرين).
 export const PRICING_MULTIPLIERS = {
   annual: 10,
-  installment2: 6,
-  installment4: 3,
 } as const;
 
 // السعر السنوي كدفعة واحدة (بعد خصم الشهرين).
@@ -146,10 +144,4 @@ export function getAnnualPrice(monthly: number): number {
 // السعر السنوي معبَّرًا عنه كمعدل شهري (للعرض تحت السعر السنوي).
 export function getAnnualMonthlyEquivalent(monthly: number): number {
   return Math.round(getAnnualPrice(monthly) / 12);
-}
-
-// سعر التقسيط: دفعتين (على 6 شهور) أو 4 دفعات (على 3 شهور) — بدون خصم.
-export function getInstallmentPrice(monthly: number, plan: 2 | 4): number {
-  const multiplier = plan === 2 ? PRICING_MULTIPLIERS.installment2 : PRICING_MULTIPLIERS.installment4;
-  return monthly * multiplier;
 }
