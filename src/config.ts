@@ -87,8 +87,7 @@ export const siteConfig = {
     {
       id: "individual",
       name: "الفردية",
-      price: "250",
-      period: "شهرياً",
+      monthly: 300,
       description: "مثالية للمحامين المستقلين",
       features: ["محامٍ واحد", "50 قضية نشطة", "إدارة العملاء والجلسات", "بوابة الموكل (10 حسابات)", "إدارة الأتعاب والمدفوعات", "استخدام بدون إعلانات"],
       cta: "ابدأ مجاناً",
@@ -97,8 +96,7 @@ export const siteConfig = {
     {
       id: "office",
       name: "المكتب",
-      price: "400",
-      period: "شهرياً",
+      monthly: 450,
       description: "للمكاتب الصغيرة والمتوسطة",
       features: ["كل مميزات الفردية، وأيضاً:", "حتى 5 محامين", "قضايا غير محدودة", "بوابة الموكل (50 حساب)", "نسخ احتياطي تلقائي يومي", "الذكاء الاصطناعي (قريباً)", "تقارير المكتب الشاملة"],
       cta: "ابدأ تجربتك",
@@ -107,8 +105,7 @@ export const siteConfig = {
     {
       id: "enterprise",
       name: "المؤسسة",
-      price: "1000",
-      period: "شهرياً",
+      monthly: 1000,
       description: "للشركات والمكاتب الكبرى",
       features: [
         "كل مميزات المكتب، وأيضاً:",
@@ -132,3 +129,27 @@ export const siteConfig = {
     { q: "ما طرق الدفع المقبولة؟", a: "بطاقات الائتمان والخصم، فودافون كاش، وتحويل بنكي للعقود السنوية." },
   ],
 };
+
+// معاملات الحساب — نفس منطق updateSuggestedPaymentAmount() في offices-portal.html:
+// سنوي = شهري × 10 (دفعة واحدة، خصم شهرين)، دفعتين = شهري × 6، 4 دفعات = شهري × 3.
+export const PRICING_MULTIPLIERS = {
+  annual: 10,
+  installment2: 6,
+  installment4: 3,
+} as const;
+
+// السعر السنوي كدفعة واحدة (بعد خصم الشهرين).
+export function getAnnualPrice(monthly: number): number {
+  return monthly * PRICING_MULTIPLIERS.annual;
+}
+
+// السعر السنوي معبَّرًا عنه كمعدل شهري (للعرض تحت السعر السنوي).
+export function getAnnualMonthlyEquivalent(monthly: number): number {
+  return Math.round(getAnnualPrice(monthly) / 12);
+}
+
+// سعر التقسيط: دفعتين (على 6 شهور) أو 4 دفعات (على 3 شهور) — بدون خصم.
+export function getInstallmentPrice(monthly: number, plan: 2 | 4): number {
+  const multiplier = plan === 2 ? PRICING_MULTIPLIERS.installment2 : PRICING_MULTIPLIERS.installment4;
+  return monthly * multiplier;
+}
