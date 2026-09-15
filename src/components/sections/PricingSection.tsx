@@ -89,7 +89,7 @@ export default function PricingSection() {
           <PaymentModeToggle mode={paymentMode} onChange={setPaymentMode} />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.id}
@@ -199,6 +199,15 @@ export default function PricingSection() {
               </a>
             </motion.div>
           ))}
+        </div>
+
+        <div className="text-center">
+          <a
+            href="/pricing#comparison"
+            className="text-sm font-semibold text-[#1E293B] underline decoration-[#C8A75D] decoration-2 underline-offset-4 hover:text-[#8A6D2F] transition-colors"
+          >
+            شوف مقارنة تفصيلية كاملة بين كل الباقات
+          </a>
         </div>
       </div>
     </section>
