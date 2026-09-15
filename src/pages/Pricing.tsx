@@ -17,15 +17,26 @@ const sharedFeatures = [
 const comparisonFeatures = [
   { name: "عدد المحامين", individual: "1", office: "حتى 5", enterprise: "حتى 15" },
   { name: "القضايا النشطة", individual: "50", office: "غير محدود", enterprise: "غير محدود" },
+  { name: "بوابة الموكل (حسابات)", individual: "10", office: "50", enterprise: "غير محدود" },
   { name: "إدارة العملاء", individual: true, office: true, enterprise: true },
-  { name: "التقويم والتنبيهات", individual: true, office: true, enterprise: true },
-  { name: "الموارد القانونية", individual: true, office: true, enterprise: true },
-  { name: "التقارير", individual: "أساسية", office: "متقدمة", enterprise: "مخصصة" },
-  { name: "نسخ احتياطي تلقائي يومي", individual: false, office: true, enterprise: true },
+  { name: "التقويم والتنبيهات (الجلسات والمهام)", individual: true, office: true, enterprise: true },
+  { name: "تعدد أطراف القضية", individual: true, office: true, enterprise: true },
+  { name: "الحكم النهائي وإقفال القضية تلقائياً", individual: true, office: true, enterprise: true },
+  { name: "تنبيهات وتقرير يومي على تليجرام", individual: true, office: true, enterprise: true },
+  { name: "الأرشيف الذكي والبحث فيه", individual: true, office: true, enterprise: true },
+  { name: "المكتبة القانونية الجاهزة (نماذج وصيغ ودليل المحامي)", individual: true, office: true, enterprise: true },
+  { name: "بحث موحد يغطي كل أقسام النظام", individual: true, office: true, enterprise: true },
+  { name: "يعمل بدون إنترنت ويتزامن تلقائياً", individual: true, office: true, enterprise: true },
+  { name: "تثبيت التطبيق على الشاشة الرئيسية (PWA)", individual: true, office: true, enterprise: true },
+  { name: "دفعات مقدمة وتقسيط الأتعاب", individual: true, office: true, enterprise: true },
+  { name: "عزل تام لبيانات المكتب (خصوصية وأمان)", individual: true, office: true, enterprise: true },
+  { name: "سجل تدقيق كامل (من عمل إيه وإمتى)", individual: true, office: true, enterprise: true },
+  { name: "نسخ احتياطي تلقائي يومي", individual: true, office: true, enterprise: true },
   { name: "يعمل على كل الأجهزة (ويب)", individual: true, office: true, enterprise: true },
-  { name: "الأرشفة الذكية", individual: false, office: true, enterprise: true },
-  { name: "المساعد بالذكاء الاصطناعي (قريباً)", individual: false, office: true, enterprise: true },
+  { name: "التقارير", individual: "أساسية", office: "متقدمة", enterprise: "مخصصة" },
   { name: "إدارة الصلاحيات والفريق", individual: false, office: true, enterprise: true },
+  { name: "نظام يتشكّل حسب تخصص مكتبك (مدني، جنائي، تجاري، عمالي...)", individual: false, office: true, enterprise: true },
+  { name: "المساعد بالذكاء الاصطناعي (قريباً)", individual: false, office: true, enterprise: true },
   { name: "دعم فني", individual: "أساسي", office: "أولوي", enterprise: "مدير حساب مخصص" },
   { name: "API مفتوح", individual: false, office: false, enterprise: true },
 ];
@@ -132,7 +143,7 @@ export default function Pricing() {
           </div>
 
           {/* Comparison Table */}
-          <div className="max-w-5xl mx-auto mb-24">
+          <div id="comparison" className="max-w-5xl mx-auto mb-24 scroll-mt-24">
             <h2 className="text-2xl font-bold text-center mb-8 text-[#1E293B]">مقارنة تفصيلية للمميزات</h2>
             <div className="overflow-x-auto rounded-xl border border-[#E2E8F0]">
               <table className="w-full text-right border-collapse bg-white">
